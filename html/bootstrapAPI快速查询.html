@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../statics/plugins/css/bootstrap.min.css"/>
+</head>
+<body>
+	<div class="container">
+		<!--
+        	作者：291879228@qq.com
+        	时间：2017-11-22
+        	描述：bootstrap
+        -->
+        <h2>bootstrap</h2>
+		<table class="table table-striped">
+			<thead><tr>
+				<th>类名</th>
+				<th>添加对象</th>
+				<th>作用</th>
+			</tr></thead>
+			<tbody>
+				<tr> <td>container</td> <td>最外围盒子</td>
+					<td>提供响应式盒子</td>				
+				</tr>
+				<tr> <td>dl-horizontal</td> <td>dl</td>
+					<td>使dl下的dt和dd成水平整齐排列</td>					
+				</tr>
+				<tr> <td>list-inline</td> <td>ul</td>
+					<td>将li放置在同一行，并添加少量padding</td>					
+				</tr>
+				<tr> <td>table</td> <td>table</td>
+					<td>使table规范化</td>				
+				</tr>
+				<tr> <td>table-striped</td> <td>table</td>
+					<td>使tbody内容呈现斑马条纹</td>					
+				</tr>
+				<tr> <td>table-bordered</td> <td>table</td>
+					<td>为单元格添加边框</td>					
+				</tr>
+				<tr> <td>table-hover</td> <td>table</td>
+					<td>tbody每一行悬停响应</td>				
+				</tr>
+				<tr> <td>table-condensed</td> <td>table</td>
+					<td>让表格更加紧凑</td>					
+				</tr>
+				<tr> <td>success,info,warning,danger</td> <td>tr，td</td>
+					<td>为对应行或单元格添加四种不同的标注颜色</td>					
+				</tr>
+				<tr> <td>table-responsive</td> <td>.table的父盒子</td>
+					<td>包裹.table使其变为响应式table，小屏幕水平滚动</td>					
+				</tr>
+				<tr> <td>text-lowercase</td> <td>p,span等</td>
+					<td>使文本变为小写字母</td>					
+				</tr>
+				<tr> <td>text-uppercase</td> <td>-</td>
+					<td>使文本变为大写字母</td>					
+				</tr>
+				<tr> <td>text-capitalize</td> <td>-</td>
+					<td>使文本每个单词首字母大写</td>				
+				</tr>			
+				<tr> <td>form-control</td> <td>input/textarea/select</td>
+					<td>width:100%,形成特殊控件与label组合</td>					
+				</tr>
+				<tr> <td>form-group</td> <td>div等</td>
+					<td>用于包裹label+form-control获得更好的排列</td>				
+				</tr>
+				<tr> <td>form-inline</td> <td>form</td>
+					<td>使元素(form-group等)排列在同一行，可能需要手动设置padding等</td>					
+				</tr>
+				<tr> <td>input-group-addon</td> <td>div等</td>
+					<td>为控件前后添加小耳朵获得更好的体验</td>					
+				</tr>
+				<tr> <td>form-horizontal</td> <td>form</td>
+					<td>使form-group中的label和控件水平排列，注册登陆常用</td>				
+				</tr>
+				<tr> <td>row</td> <td>栅格系统父盒子</td>
+					<td>用于包裹col-xx-xx类型的栅格元素，有时也可不用包裹</td>					
+				</tr>
+				<tr> <td>col-xs-，col-sm-，col-md-，col-lg-</td> <td>需要调节栅格占比的元素上</td>
+					<td>搭配占比数字获得多样的排列，分别适用于小屏，平板，桌面显示器，大屏幕显示器，pc端常用md</td>					
+				</tr>
+				<tr> <td>col-md-1/-2/-3/-4..12/</td> <td>需要调节栅格占比的元素上</td>
+					<td>整个宽度为12份，按占比数字获得对应宽度，超出后排在下一行，元素组合排列获得更好的效果，xs、sm、lg同理</td>				
+				</tr>
+				<tr> <td>col-md-offset-*</td> <td>需要调节栅格占比的元素上</td>
+					<td>将元素左侧空出对应占比宽度，比如对齐按钮时</td>					
+				</tr>
+				<tr> <td>checkbox，redio</td> <td>div等</td>
+					<td>用于包裹checkbox、redio控件及其文字说明，控件及文字一般包裹在一个label中</td>				
+				</tr>
+				<tr> <td>disabled</td> <td>checkbox、redio盒子</td>
+					<td>使整个控件以及文字呈现不可选中的状态，控件需要设置disabled属性</td>					
+				</tr>
+				<tr> <td>checkbox-inline、radio-inline</td> <td>包裹控件的元素div或者直接label上</td>
+					<td>使控件排列在一行上</td>					
+				</tr>
+				<tr> <td>form-control-static</td> <td>纯文本的盒子</td>
+					<td>纯文本信息需要和label显示在同一行，显示在原本控件的位置上</td>				
+				</tr>
+				<tr> <td>has-success/warning/error</td> <td>包裹label和控件的盒子（form-group）</td>
+					<td>控件框和文字呈现对应的颜色，常用于输入提示</td>					
+				</tr>
+				<tr> <td>input-lg/sm</td> <td>input/select</td>
+					<td>调节控件高度，宽度还是由col-xx-*调节</td>					
+				</tr>
+				<tr> <td>form-group-lg/sm</td> <td>表单组合</td>
+					<td>同时调节文字与控件高度</td>					
+				</tr>
+				<tr> <td>btn</td> <td>a/button/input(button)/submit</td>
+					<td>提供按钮样式</td>					
+				</tr>
+				<tr> <td>btn-default/primary/success/info/warning/danger/link</td> <td>.btn元素</td>
+					<td>为btn添加一些特殊色彩样式</td>					
+				</tr>
+				<tr> <td>btn-lg/sm/xs/block</td> <td>.btn元素</td>
+					<td>提供大/小/超小尺寸/100%宽度的按钮</td>					
+				</tr>
+				<tr> <td>img-responsive</td> <td>img</td>
+					<td>图片支持响应式布局</td>					
+				</tr>
+				<tr> <td>close</td> <td>button</td>
+					<td>构建一个关闭图标，button内放一个'span & times；/span'</td>					
+				</tr>
+				<tr> <td>pull-left/right</td> <td>需要浮动的元素</td>
+					<td>使元素左右浮动float</td>					
+				</tr>
+				<tr> <td>clearfix</td> <td>清除浮动的父盒子</td>
+					<td>为父元素添加以清除浮动</td>					
+				</tr>
+				<tr> <td>show/hidden</td> <td>显示或隐藏的元素</td>
+					<td>显示、隐藏display：</td>					
+				</tr>
+				<tr> <td>invisible</td> <td>需要隐身的元素</td>
+					<td>隐藏元素visibility：hidden</td>					
+				</tr>
+				<tr> <td>text-overflow</td> <td>文本需要截断隐藏的元素</td>
+					<td>文本超出宽度时隐藏并用省略号代替</td>					
+				</tr>
+				
+			</tbody>
+		</table>
+		<h3>1234</h3>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>类名</th>
+					<th>添加对象</th>
+					<th>作用</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr> <td></td> <td></td>
+					<td></td>					
+				</tr>
+				<tr> <td></td> <td></td>
+					<td></td>					
+				</tr>
+				<tr> <td></td> <td></td>
+					<td></td>					
+				</tr>
+				<tr> <td></td> <td></td>
+					<td></td>					
+				</tr>
+				<tr> <td></td> <td></td>
+					<td></td>					
+				</tr>
+				<tr> <td></td> <td></td>
+					<td></td>					
+				</tr>
+			</tbody>
+		</table>
+			
+		
+		
+		
+	</div>
+	
+	
+</body>
+</html>

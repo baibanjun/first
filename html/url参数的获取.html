@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+	<script type="text/javascript">
+		var url_data={};
+		$.each(location.search.substr(1).split('&'), function(i,n) {//substr(),原生方法，截取字符串index开始，有length参数可省略；
+			url_data[n.split('=')[0]]=n.split('=')[1];
+		});
+		//输出为参数的键值对对象；
+	</script>
+</html>
