@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../statics/plugins/css/bootstrap.min.css"/>
+</head>
+<body>
+	<!--由于加载了bootstrap,类名pagination使得风格为bootstrap-->
+	<ul id="demo1" class="pagination"></ul>
+	<ul class="pagination demo2"></ul>
+	
+</body>
+<script src="../statics/plugins/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../statics/plugins/js/jqPaginator.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$('#demo1').jqPaginator({
+	    totalPages: 100,
+	    visiblePages: 7,
+	    currentPage: 1,
+	    first: '<li class="first"><a href="javascript:void(0);">首页</a></li>',
+	    prev: '<li class="prev"><a href="javascript:void(0);">上一页</a></li>',
+	    next: '<li class="next"><a href="javascript:void(0);">下一页</a></li>',
+	    last: '<li class="last"><a href="javascript:void(0);">末页</a></li>',
+	    page: '<li class="page"><a href="javascript:void(0);">{{page}}</a></li>',
+	    onPageChange: function (num, type) { //num当前切换到的页数索引
+	    }
+	});
+	$('.demo2').jqPaginator({
+	    totalPages: 100,
+	    visiblePages: 7,
+	    currentPage: 1,
+	    first: '<li class="first"><a href="javascript:void(0);">首页</a></li>',
+	    prev: '<li class="prev"><a href="javascript:void(0);">上一页</a></li>',
+	    next: '<li class="next"><a href="javascript:void(0);">下一页</a></li>',
+	    last: '<li class="last"><a href="javascript:void(0);">末页</a></li>',
+	    page: '<li class="page"><a href="javascript:void(0);">{{page}}</a></li>',
+	    onPageChange: function (num, type) { //num当前切换到的页数索引
+	    }
+	});
+</script>
+</html>

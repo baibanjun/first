@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>二维码生成与下载</title>
+	<link rel="stylesheet" type="text/css" href="../statics/plugins/css/bootstrap.min.css"/>
+</head>
+<body>
+	<div style="margin: 0 auto;width: 1400px;">
+		<div id="demo1"></div>
+		<div id="demo2"></div>
+		<!--将base64信息填在href中，download属性中填写下载名，如xxx.png-->
+		<a href="" class="download btn btn-success btn-lg" download="">下载</a>
+	</div>
+</body>
+	<script src="../statics/plugins/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../statics/plugins/js/jquery.qrcode.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$('#demo1').qrcode('xxooxxxo');//直接将text内容生成二维码，默认256*256canvas
+		$('#demo2').qrcode({
+			render:'canvas',//绘制方式
+			width:200,
+			height:200,
+			text:'English',//text里面有中文时转码 ： encodeURI("中文中文")
+			foreground:'red',
+			background:'#ccc'
+		});
+		//点击下载#demo2图片
+		$('.download').click(function(){
+			var url_base64=document.getElementById('demo2').firstChild.toDataURL();
+			//toDataURL()是canvas方法，将canvas的图片转化为base64
+			$('.download').attr({
+				href:url_base64,
+				download:'abc.png'
+			});			
+		})
+	</script>
+</html>

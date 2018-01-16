@@ -1,0 +1,11 @@
+$(function(){
+	$('.treeview').click(function(){
+		if($(this).hasClass('active')){
+			$(this).removeClass('active');
+			$(this).find('.second_li').hide(400);
+		}else{
+			$(this).addClass('active');
+			$(this).find('.second_li').show(400);
+		}
+	})
+});
