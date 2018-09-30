@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+	<link rel="stylesheet" href="public/layui-v2.3.0/layui/css/layui.css">
+	<style>
+		.item{
+			width: 200px;
+			height: 100px;
+			font-size: 30px;
+			margin: 0 60px;
+		}
+	</style>	
+</head>
+
+<body>
+	<div id="main">
+		<div style="height: 300px;line-height: 300px;margin: 10% 20%">
+			<button class="layui-btn item">js相关</button>
+			<button class="layui-btn layui-btn-normal item">css相关</button>
+			<button class="layui-btn layui-btn-warm item">代码块</button>
+		</div>
+	</div>
+	
+	
+</body>
+
+<script src="public/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="public/layui-v2.3.0/layui/layui.all.js"></script>
+<script type="text/javascript" src="public/vue.js"></script>
+<script type="text/javascript" src="data/data.js"></script>
+<script type="text/javascript">
+	new vue({
+		el:'#main',
+		data:{
+			list:[]
+		},
+		created:{
+
+		},
+		methods:{
+
+		}
+	})
+</script>
+</html>

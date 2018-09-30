@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+</head>
+<body>
+</body>
+<script src="../statics/plugins/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../statics/plugins/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+	$.cookie('cookieName','value',{expires:7,path:'/'})  //没有设置有效期，则为会话cookie。
+	$.cookie('cookieName') //读取cookie，存在则返回值，不存在返回null
+	$.cookie('cookieName',null,{expires:-1,path:'/'})//删除cookie，将有效期改为-1
+</script>
+</html>

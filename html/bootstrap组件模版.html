@@ -13,7 +13,7 @@
 			<!--下拉菜单-->
 			<div class="box">
 				<div class="dropdown">
-					<button class="btn dropdown-toggle" id="dropdown1" data-toggle="dropdown">请选择<span class="caret"></span></button>
+					<button class="btn btn-default dropdown-toggle" id="dropdown1" data-toggle="dropdown">请选择<span class="caret"></span></button>
 					<ul class="dropdown-menu" role='menu' aria-labelledby='dropdown1'>
 						<li class="dropheader" role="presentation">标题1</li>
 						<li role="presentation"><a href="#" role="menuitem" tabindex="-1">1</a></li>
@@ -25,8 +25,9 @@
 						<li class="dropheader" role="presentation">标题2</li>
 						<li role="presentation"><a href="#" role="menuitem" tabindex="-1">被分离</a></li>
 					</ul>
-					
-					<button class="btn dropdown-toggle" id="dropdown2" data-toggle="dropdown">请选择<span class="caret"></span></button>
+				</div>
+				<div class="dropdown">									
+					<button class="btn btn-default dropdown-toggle" id="dropdown2" data-toggle="dropdown">请选择<span class="caret"></span></button>
 					<ul class="dropdown-menu" role='menu' aria-labelledby='dropdown2'>
 						<li role="presentation"><a href="#" role="menuitem" tabindex="-1">1</a></li>
 						<li role="presentation"><a href="#" role="menuitem" tabindex="-1">2</a></li>
@@ -37,11 +38,47 @@
 						<li role="presentation"><a href="#" role="menuitem" tabindex="-1">被分离</a></li>
 					</ul>
 				</div>
+				
+				<nav class="navbar navbar-default" role="navigation">
+				    <div class="container-fluid"> 
+					    <div class="navbar-header">
+					        <a class="navbar-brand" href="#">放在导航内</a>
+					    </div>
+					    <div>
+					        <ul class="nav navbar-nav">
+					            <li class="active"><a href="#">iOS</a></li>
+					            <li><a href="#">SVN</a></li>
+					            <li class="dropdown">
+					                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					                    Java 
+					                    <b class="caret"></b>
+					                </a>
+					                <ul class="dropdown-menu">
+					                    <li><a href="#">jmeter</a></li>
+					                    <li><a href="#">EJB</a></li>
+					                    <li><a href="#">Jasper Report</a></li>
+					                    <li class="divider"></li>
+					                    <li><a href="#">分离的链接</a></li>
+					                    <li class="divider"></li>
+					                    <li><a href="#">另一个分离的链接</a></li>
+					                </ul>
+					            </li>
+					        </ul>
+					    </div>
+				    </div>
+				</nav>
 			</div>
-			
-			
+			<!---->			
+			<div class="box">
+
+			</div>
+			<!---->
 			<div class="box"></div>
+			<!---->
 			<div class="box"></div>
+			<!---->
+			<div class="box"></div>
+			<!---->
 			<div class="box"></div>
 			
 			
