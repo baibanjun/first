@@ -18,12 +18,12 @@
 	<script src="../statics/plugins/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../statics/plugins/js/jquery.qrcode.min.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-		$('#demo1').qrcode('xxooxxxo');//直接将text内容生成二维码，默认256*256canvas
+		$('#demo1').qrcode(encodeURI("http://中文中文"));//最简易方式,直接将text内容生成二维码，默认256*256canvas
 		$('#demo2').qrcode({
 			render:'canvas',//绘制方式
 			width:200,
 			height:200,
-			text:'English',//text里面有中文时转码 ： encodeURI("中文中文")
+			text:encodeURI("中文中文"), //text里面有中文时转码 ： encodeURI("中文中文")
 			foreground:'red',
 			background:'#ccc'
 		});
