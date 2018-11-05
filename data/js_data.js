@@ -1,10 +1,11 @@
+//type=1 原生类 ， type = 2 插件类
+
 const all_list = [
 	//
 	{
-		id:1,
 		title:'',
 		content:'',
-		type:1
+		type:2
 	}
 	//
 	// {
