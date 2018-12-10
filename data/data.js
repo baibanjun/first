@@ -1,12 +1,20 @@
-//type=1 原生类 ， type = 2 插件类
+//type=1
 
 const all_list = [
 	//
 	{
 		title:'',
 		content:'',
-		type:2
+		type:1,
+		mark:true
 	}
+	,{
+		title:'',
+		content:'',
+		type:1,
+		mark:true
+	}
+
 	//
 	// {
 	// 	id:,
