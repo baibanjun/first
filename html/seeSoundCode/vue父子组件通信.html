@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<my-com v-model="msg"></my-com>
+		输入的值为：{{msg}}
+	</div>	
+</body>
+<script src="../../statics/plugins/js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	//该例子为：子组件内input双向绑定父组件值,子组件向父组件传值同理,v-model="msg"其实是:value="msg" @input="msg = arguments[0]"的缩写
+	// 1. 给子组件绑定原生监听方法input,执行方法change_f_val
+	// 2. change_f_val方法内使用$emit()触发子组件标签上的自定义属性方法input(这里的input是自定义的)
+	// 3. 自定义input绑定了父组件的方法，该方法只有一句msg = arguments[0],所以使用直接书写方式,使用语法糖可缩写为v-model
+	var myCom = {
+		template:'<div><input type="text" @input="change_f_val" :value="value"></input></div>',
+		data:function(){
+			return {} //必须返回一个对象
+		},
+		props:{
+			value:String
+		}, //或取父组件的数据,用属性名传递, 属性名!!!属性名!!! 
+		//属性的值为父组件传递值,props声明属性名,props内值可在子组件内双向绑定,即v-model="laji",但父组件的值不变化.
+		methods:{
+			change_f_val:function(e){
+				this.$emit('input',e.target.value) //必须是触发一个叫input的自定义事件
+			}
+		}
+	};
+	var app = new Vue({
+		el:'#app',
+		data:{
+			msg:'666'
+		},
+		components:{
+			'my-com':myCom
+		},
+		methods:{
+// 			handle:function(_num){
+// 				this.msg = _num; 
+// 			}
+		}
+	})
+</script>
+</html>

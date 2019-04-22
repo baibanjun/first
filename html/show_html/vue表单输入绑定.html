@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../statics/plugins/layui-v2.3.0/layui/css/layui.css"/>
+	<link rel="stylesheet" type="text/css" href="../../statics/style/common.css"/>
+	<body>
+		<div class="main" id="app">
+			<p style="margin-top: 10px;"><a href="../../index.html" class="layui-btn layui-btn-primary"><<返回首页</a></p>
+			<fieldset class="layui-elem-field layui-field-title">
+				<legend>vue表单输入绑定</legend>
+			</fieldset>
+			<!--主体部分-->
+			<div class="content">
+				<!--text和文本域输入绑定-->
+				<input type="text" v-model="msg_1" placeholder="请输入">
+				<p>显示输出：{{msg_1}}</p>
+				<textarea v-model="msg_2" placeholder="请输入"></textarea>
+				<p>显示文本域：{{msg_2}}</p>
+				<hr>
+				<!--复选框-->
+				<span class="readonly">单个checkbox显示布尔值</span>
+				<input type="checkbox" v-model="check_1">
+				<label>{{ check_1 }}</label>
+				<hr>
+
+				<span class="readonly">多个checkbox显示value数组</span>
+				<input type="checkbox" value="x1" v-model="check_2">
+				<input type="checkbox" value="x2" v-model="check_2">
+				<input type="checkbox" value="x3" v-model="check_2">
+				<label>{{ check_2 }}</label>
+				<hr>
+				<!--单选框-->
+				<input type="radio" id="one" value="man" v-model="radio_1">
+				<label>男</label>
+				<br>
+				<input type="radio" id="two" value="woman" v-model="radio_1">
+				<label>女</label>
+				<br>
+				<span>你选择了: {{ radio_1 }}</span>
+				<hr>
+				<!--下拉列表-->
+				<span class="readonly">select显示选中option的value,无则显示innerTEXT</span>
+				<select v-model="select_1">
+					<option disabled value="">请选择</option>
+					<option>A</option>
+					<option value="2">B</option>
+					<option>C</option>
+				</select>
+				<span>你选中了: {{ select_1 }}</span>
+				<hr>
+
+				<span class="readonly">select多选显示数组</span><br>
+				<select v-model="select_2" multiple style="width:60px;" >
+					<option>A</option>
+					<option value='2'>B</option>
+					<option value="这是c">C</option>
+				</select>
+				<br>
+				<span>Selected: {{ select_2 }}</span>
+				<hr>
+
+				<span class="readonly">v-for动态渲染</span><br>
+				<select v-model="select_3">
+					<option disabled value="">请选择</option>
+					<option v-for="it in options" :value="it.value">{{it.text}}</option>
+				</select>
+				<span>你选中了: {{ select_3 }}</span>
+				<hr>
+				<!--表单输入修饰符-->
+				<span class="readonly">.lazy失去光标才会同步值</span><br>
+				<input type="text" v-model.lazy="msg_3" placeholder="请输入">
+				<p>显示输出：{{msg_3}}</p>
+				<span class="readonly">.number将输入值转化为数字类型</span><br>
+				<input type="number" v-model.number.lazy="msg_4" placeholder="请输入">
+				<p>显示输出：{{msg_4}}</p>
+				<span class="readonly">.trim去掉首尾空白</span><br>
+				<input type="text" v-model.lazy.trim="msg_5" placeholder="请输入">
+				<p>显示输出：{{msg_5}}</p>
+				
+			</div>
+		</div>
+		
+	</body>
+	<script type="text/javascript" src="../statics/plugins/js/vue.min.js"></script>
+	<script type="text/javascript">
+		var vue = new Vue({
+			el:'#app',
+			data:{
+				msg:"vue",
+				msg_1:'',
+				msg_2:'',
+				msg_3:'',
+				msg_4:'',
+				msg_5:'',
+				check_1:false,
+				check_2:[],
+				radio_1:'',
+				select_1:'',
+				select_2:[],
+				select_3:'',
+				options:[
+					{text:'A',value:'a'},
+					{text:'B',value:'b'},
+					{text:'C',value:'c'}
+				]
+			}
+		})
+	</script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.box{
+			width: 80px;
+			height: 80px;
+			text-align: center;
+			border: 1px solid #ccc;
+			background: #009F95;
+			line-height: 80px;
+		}
+		/*进入过程从无到有 v-enter v-enter-active v-enter-to*/
+		/*离开过程从有到无 v-leave有 v-leave-active途中 v-leave-to无*/
+		/*当transition 上的name="xx" 时，用xx-替代v-，适用多个同时过渡*/
+		.xx-leave,.xx-enter-to{
+			transform: scale(1);
+		}
+		.xx-leave-active{
+			animation: xx_1 .8s ease-in-out;
+		}
+		.xx-enter-active{
+			animation: xx_1 .8s ease-in-out reverse;
+		}
+		.xx-leave-to,.xx-enter{
+			transform: scale(0);
+		}
+		@keyframes xx_1{
+			0%{
+				transform: scale(1);
+			}
+			50%{
+				transform: scale(1.5);
+				/* transform: rotateX(45); */
+			}
+			100%{
+				transform: scale(0);
+			}
+		}
+	</style>
+	<body>
+		<div id="app">
+			<button @click="show=!show">点击</button>
+			<transition name="xx">
+				<my_com_1 v-if="show"></my_com_1>
+			</transition>
+			<hr >
+			<!--自定义动画类名 主要用于借用第三方动画库-->
+			<transition >
+				<my_com_1 v-if="show"></my_com_1>
+			</transition>
+		</div>
+	</body>
+	<script src="../../statics/plugins/js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var my_com_1 = {
+				template:'<div class="box"></div>',
+			};
+		var app = new Vue({
+			el:'#app',
+			data:{
+				msg:'666',
+				show:true
+			},
+			components:{
+				'my_com_1':my_com_1
+			},
+			methods:{}
+		})
+	</script>
+</html>

@@ -17,39 +17,38 @@
 		$('body').append('<input id="file_input" type="file" style="display:none;"/>');
 		
 		$('#file_input').off('change').on('change', function (e) {
-          //支持 FileReader
-          if (window.FileReader) {
-
-              var file = e.target.files[0]; //file.name文件全名,file.size文件尺寸，以B为单位
-              var fd = new FormData();
-              fd.append("file", file);
-              $.ajax({
-                  url:'resum/upload',
-                  type: "POST",
-                  processData: false,
-                  contentType: false,
-                  async: false,
-                  data: fd,
-                  xhr: function () {
-                      var xhr = $.ajaxSettings.xhr();
-                      return xhr;
-                  },
-                  success: function (data) {
-                  	console.log('成功');
-                  }
-              }).always(function () {
-                  $('#file_input').empty().remove();
-              });
-
-          } else {
-              $('#file_input').empty().remove();
-          }
-          return false;
-      });
-      setTimeout(function () {
-          $('#file_input').click();
-      }, 0);
-      return false;
+			//支持 FileReader
+			if (window.FileReader) {
+				var file = e.target.files[0]; //file.name文件全名,file.size文件尺寸，以B为单位
+				var fd = new FormData();
+				fd.append("file", file);
+				$.ajax({
+					url:'resum/upload',
+					type: "POST",
+					processData: false,
+					contentType: false,
+					async: false,
+					data: fd,
+					xhr: function () {
+						var xhr = $.ajaxSettings.xhr();
+						return xhr;
+					},
+					success: function (data) {
+						console.log('成功');
+					}
+				}).always(function () {
+					$('#file_input').empty().remove();
+				});
+	
+			} else {
+				$('#file_input').empty().remove();
+			}
+			return false;
+		});
+		setTimeout(function () {
+			$('#file_input').click();
+		}, 0);
+		return false;
 	}
 </script>
 </html>
