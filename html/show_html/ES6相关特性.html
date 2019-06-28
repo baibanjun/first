@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../statics/plugins/layui-v2.3.0/layui/css/layui.css"/>
+	<link rel="stylesheet" type="text/css" href="../../statics/style/common.css"/>
+	<body>
+		<div class="main">
+			<p style="margin-top: 10px;"><a href="../../index.html" class="layui-btn layui-btn-primary"><<返回首页</a></p>
+			<fieldset class="layui-elem-field layui-field-title">
+				<legend>标题</legend>
+			</fieldset>
+			<!--主体部分-->
+			<div class="content">
+				<b>let和const声明</b>
+				<hr/>
+				<p> <span class="mark">//有块级作用域，在for循环中，条件和内容是两个作用域</span>
+					for (let i = 0; i < 3; i++) {  //该处的i是父作用域
+						let i = 'abc';  //该处的i是子作用域
+						console.log(i); //打印abc
+					}
+					<span class="mark">//不存在变量提升，不允许重复声明</span>
+					<span class="mark">//暂时性死区</span>
+					let str = 'abc'
+					if(true){
+						console.log(str) //正常打印
+					}
+					if(true){
+						console.log(str)  //let声明导致str绑定这个if区域，出现未声明报错，即暂时性死区（TDZ）
+						let str
+					}
+					<span class="mark">//另类死区</span>
+					function bar(x = y, y = 2) { // y此时还未声明，x = y报错，换成（y = 2,x = y）不会报错
+						return [x, y];
+					}
+					bar(); // 报错
+					<span class="mark">//const存储的是一个地址，地址不可变，但地址内对象可添加属性</span>
+					const str = {}
+					const arr = []
+					str.prop = "123" //str.prop可访问到'123'
+					arr.push('123') //成功
+					arr.length = 0 //成功
+					str = {} //报错 is read-only 不可修改指向地址
+					arr = ['abc'] //报错
+					<span class="mark">//顶层对象window赋值</span>
+					var a = 1
+					window.a  //1
+					let b = 2
+					window.b  //undefind
+				</p>
+				<br>
+				
+				<b>ES6一共有6种变量声明方法</b>
+				<hr/>
+				<p> <span class="mark">//ES5中两种var 、function</span>				
+					<span class="mark">//ES6中 let 、const 、import 、class</span>					 
+				</p>
+				<br>
+				
+				<b>变量的解构赋值</b>
+				<hr/>
+				<p> <span class="mark">//按模式匹配，匹配不上为undefind</span>
+					let [a, b, c] = [1, 2, 3];
+					let [foo, [[bar], baz]] = [1, [[2], 3]];
+					let [x, , y] = [1, 2, 3]; //x = 1 , y = 3
+					let [head, ...tail] = [1, 2, 3, 4]; //head = 1,tail = [2,3,4]
+					let [x, y, ...z] = ['a']; // x = 'a' ,y = undefind ,z = []
+					let [foo] = []; //undefind
+					let [bar, foo] = [1]; //foo = undefind
+					let [x, y] = [1, 2, 3]; //不完全解构
+					let [a, [b], d] = [1, [2, 3], 4]; //b = 2
+					let [foo] = 1; //右边不是数组报错
+					let [x, y, z] = new Set(['a', 'b', 'c']); //Set结构可以解构
+					let [x, y = 'b'] = ['a']; // 允许指定默认值 x='a', y='b'
+					let [x, y = 'b'] = ['a', undefined]; // x='a', y='b' 严格匹配（===）undefind时默认值生效
+					let [x = 1] = [null]; //x = null
+					<span class="mark">//</span>
+					
+					<span class="mark">//</span>					 
+				</p>
+				<br>
+				
+				<b>ES6一共有6种变量声明方法</b>
+				<hr/>
+				<p> <span class="mark">//xxx</span>
+					
+					<span class="mark">//</span>
+					
+					<span class="mark">//</span>					 
+				</p>
+				<br>
+			</div>
+		</div>
+		
+	</body>
+</html>
+

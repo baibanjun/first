@@ -17,12 +17,12 @@
 			<li class="layui-this" style="padding: 0 40px;">js/css相关</li>
 			<li style="padding: 0 40px;">方案库</li>
 		  </ul>
-		  <div class="layui-tab-content" style="height: 100px;">
+		  <div class="layui-tab-content" style="min-height: 200px;">
 			<div class="layui-tab-item layui-show">
-				<a :href="n.url" class="layui-btn layui-btn-lg" :class="index%2==0?'layui-btn-primary':''" v-for="(n,index) in list">{{n.title}}</a>
+				<a :href="n.url" class="layui-btn layui-btn-lg" :class="index%2==0?'layui-btn-primary':''" v-for="(n,index) in list" style="margin: 4px;">{{n.title}}</a>
 			</div>
 			<div class="layui-tab-item">
-				<a :href="n.url" class="layui-btn layui-btn-lg" :class="index%2==0?'layui-btn-primary':''" v-for="(n,index) in project_list">{{n.title}}</a>
+				<a :href="n.url" class="layui-btn layui-btn-lg" :class="index%2==0?'layui-btn-primary':''" v-for="(n,index) in project_list" style="margin: 4px;">{{n.title}}</a>
 			</div>
 		  </div>
 		</div>

@@ -37,6 +37,18 @@ const all_list = [
 	  url: 'html/show_html/vue表单输入绑定.html',
 	  type: 1,
 	  mark: true
+	},
+	{
+	  title: 'vue-cli项目小知识点',
+	  url: 'html/show_html/vue-cli项目小知识点.html',
+	  type: 1,
+	  mark: true
+	},
+	{
+	  title: 'ES6相关特性',
+	  url: 'html/show_html/ES6相关特性.html',
+	  type: 1,
+	  mark: true
 	}
 	
 	

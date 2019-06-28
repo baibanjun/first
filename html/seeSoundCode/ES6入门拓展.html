@@ -6,16 +6,28 @@
 	</head>
 	<body></body>
 	<script type="text/javascript">
+		
+		
 		//let声明相关  1.块级作用域 2.不存在变量提升 3.作用域下不能重复声明
 		//const声明 1.声明只读常量,声明必须赋值,2.块级作用域,没有变量提升
-		
+//----------------------------------		
 		//字符串新方法
 		//遍历
 		for(let i of 'foo'){
-			console.log(i);
+			// console.log(i);//==>分别打印f,o,o
 		}
-		//includes(),startsWith(),endsWith()
+//----------------------------------
+		//includes()是否包含参数字符串,startsWith()参数字符串是否在开头,endsWith()是否在尾部,
+		//均返回布尔值
 		let xx = 'Hello world';
-		console.log(xx.startsWith('Hello'));
+		// console.log(xx.startsWith('Hello')); 
+//-----------------------------------
+		//模板字符串
+		var str_1 = `
+		this is 
+		a string,
+		${xx} is value
+		`.trim(); //字符串多行有效,${}内放置变量(可运算),可调用函数f(n),默认保留换行空格等样式,去除*首尾*换行使用trim(),`xx is xx`.trim()
+		console.log(str_1)
 	</script>
 </html>

@@ -9,12 +9,16 @@
 <body>
 	<div id="app">
 		<my-com v-model="msg"></my-com>
-		输入的值为：{{msg}}
+		<my-com v-model="xxx"></my-com>
+		输入的msg值为：{{msg}}<br>
+		输入的xxx值为：{{xxx}}
 	</div>	
 </body>
 <script src="../../statics/plugins/js/vue.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-	//该例子为：子组件内input双向绑定父组件值,子组件向父组件传值同理,v-model="msg"其实是:value="msg" @input="msg = arguments[0]"的缩写
+	
+	// 该例子为：子组件内input双向绑定父组件值,子组件向父组件传值同理,v-model="msg"其实是:value="msg" @input="msg = arguments[0]"的缩写
+	// 可实现具有双向绑定的input组件复用
 	// 1. 给子组件绑定原生监听方法input,执行方法change_f_val
 	// 2. change_f_val方法内使用$emit()触发子组件标签上的自定义属性方法input(这里的input是自定义的)
 	// 3. 自定义input绑定了父组件的方法，该方法只有一句msg = arguments[0],所以使用直接书写方式,使用语法糖可缩写为v-model
@@ -36,7 +40,8 @@
 	var app = new Vue({
 		el:'#app',
 		data:{
-			msg:'666'
+			msg:'666',
+			xxx:''
 		},
 		components:{
 			'my-com':myCom
