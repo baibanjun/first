@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		//新建项目
+		1.cmd执行vue ui
+		2.新建一个项目
+		3.手动配置
+		4.选择babel，Router，vuex，css预处理器，linter，使用配置文件
+		
+		//elementUI 表单验证绑定步骤
+		1.给el-form 设置属性ref = 'xxx' (form名字)、:rules="rules"、:model="xxx"(表单数据对象)
+		2.给el-form-item 设置属性prop="xx_1"(rules内的字段名)
+		3.export 中data的return内,添加函数方法       //该函数方法可单独拎出来放到tools.js中调用
+				const xx_c =  (rule,value,callback) => { //
+					if(xxx){
+						return callback(new Error('账号不能为空'))
+					}else{
+						callback()  //必须要执行callback()
+					}
+				}
+		4.data的return中添加对象
+			rules:{
+				xx_1:[ required: true,validator: xx_c, trigger: 'blur' ],  //required为true时有小红星，validator内为验证方法名
+				xx_2:[ required: true,validator: xx_c, trigger: 'blur' ]   //可使用同一套验证方法
+			}
+	</body>
+</html>

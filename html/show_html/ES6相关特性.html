@@ -61,13 +61,12 @@
 				
 				<b>变量的解构赋值</b>
 				<hr/>
-				<p> <span class="mark">//按模式匹配，匹配不上为undefind</span>
+				<p> <span class="mark">//数组解构，按模式匹配，匹配不上为undefind</span>
 					let [a, b, c] = [1, 2, 3];
 					let [foo, [[bar], baz]] = [1, [[2], 3]];
 					let [x, , y] = [1, 2, 3]; //x = 1 , y = 3
 					let [head, ...tail] = [1, 2, 3, 4]; //head = 1,tail = [2,3,4]
 					let [x, y, ...z] = ['a']; // x = 'a' ,y = undefind ,z = []
-					let [foo] = []; //undefind
 					let [bar, foo] = [1]; //foo = undefind
 					let [x, y] = [1, 2, 3]; //不完全解构
 					let [a, [b], d] = [1, [2, 3], 4]; //b = 2
@@ -76,16 +75,34 @@
 					let [x, y = 'b'] = ['a']; // 允许指定默认值 x='a', y='b'
 					let [x, y = 'b'] = ['a', undefined]; // x='a', y='b' 严格匹配（===）undefind时默认值生效
 					let [x = 1] = [null]; //x = null
-					<span class="mark">//</span>
 					
-					<span class="mark">//</span>					 
+					<span class="mark">//对象的解构</span>
+					let { foo, bar } = { foo: 'aaa', bar: 'bbb' } //没有次序，变量必须与属性同名
+					let { baz } = { foo: 'aaa', bar: 'bbb' } // 结构失败，值为undefind
+					let { log, sin, cos } = Math; 
+					const { log } = console; log('hello')  //将现有的对象解构赋值	
+					let { foo: baz } = { foo: 'aaa', bar: 'bbb' };  //foo是匹配的模式,baz才是变量,baz值为'aaa'，注意真正被赋值的是后者baz，前者只是寻找同名属性，此时的foo是not defined
+					简写{foo,bar} = { foo: 'aaa', bar: 'bbb' } => let { foo: foo, bar: bar } = { foo: 'aaa', bar: 'bbb' };简写原理同上
+					var {x, y = 5} = {x: 1};//默认值
+					var {x: y = 3} = {x: 5};//默认值，同样只能严格等于undefind时默认值生效
+					let x; {x} = {x: 1}; //语法报错，会将{x}理解为代码块,改为 ({x} = {x:1}) ,即不将大括号写在行首
+					let arr = [1, 2, 3]; let {0 : first, [arr.length - 1] : last} = arr;  //数组也是对象的一种，结构时0代表索引, first值为1,last值为3
+					<span class="mark">//字符串解构</span>
+					const [a, b, c, d, e] = 'hello'; //解构为类似数组的对象,可直接打印出 a为'h' ...
+					let {length : len} = 'hello'; //字符串和数组有length属性，可解构
+					<span class="mark">//变量解构用途</span>
+					let x = 1;let y = 2;[x, y] = [y, x]; //交换变量的值
+					function example() { return [1, 2, 3 ] } ; let [a, b, c] = example();//提取数组
+					function example() { return {foo: 1,bar: 2} } ; let { foo, bar } = example();//提取对象
+					function f([x, y, z]) { ... } ; f([1, 2, 3]); // 有序的函数参数
+					function f({x, y, z}) { ... } ; f({z: 3, y: 2, x: 1}); // 无序的函数参数
 				</p>
 				<br>
 				
-				<b>ES6一共有6种变量声明方法</b>
+				<b>Symbol</b>
 				<hr/>
-				<p> <span class="mark">//xxx</span>
-					
+				<p> <span class="mark">//第七种原始数据类型</span>
+						前六种是undefind,null,Boolean,String,Number,Object
 					<span class="mark">//</span>
 					
 					<span class="mark">//</span>					 
