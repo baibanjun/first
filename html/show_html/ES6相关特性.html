@@ -99,12 +99,19 @@
 				</p>
 				<br>
 				<!------------->
-				<b>对象的扩展</b>
+				<b>对象的扩展--新增方法</b>
 				<hr/>
-				<p> <span class="mark">//新增方法</span>
-						。。。
-					<span class="mark">//</span>
-					
+				<p> <span class="mark">//Object.is()</span>
+						比较两个值是否全等，解决===方法中不能比较NaN不等于自身,以及+0 等于 -0
+						+0 === -0 //true
+						NaN === NaN  // false
+						Object.is(+0, -0) // false
+						Object.is(NaN, NaN) // true
+					<span class="mark">//Object.assign()</span>
+						对象的合并,将源对象的所有可枚举属性，复制到目标对象
+						Object.assign方法的第一个参数是目标对象，后面的参数都是源对象。
+						const obj_1 = {a:1} ; const obj_2 = {b:2} ; const obj_3 = {c:3}
+						Object.assign(obj_1,obj_2,obj_3) // obj_1 值 {a:1,b:2,c:3}
 					<span class="mark">//</span>					 
 				</p>
 				<br>
@@ -113,19 +120,35 @@
 				<hr/>
 				<p> <span class="mark">//第七种原始数据类型</span>
 						前六种是undefind,null,Boolean,String,Number,Object
-					<span class="mark">//222</span>
+					<span class="mark">//独一无二的值</span>
 					
 					<span class="mark">//</span>					 
 				</p>
 				<br>
 				<!------------->
-				<b>xxx</b>
+				<b>Set数据结构</b>
 				<hr/>
-				<p> <span class="mark">//</span>
-						。。。
-					<span class="mark">//</span>
-					
-					<span class="mark">//</span>					 
+				<p> <span class="mark">//构造函数，类似数组，成员唯一</span>
+						const a = new Set()
+						可接受一个数组作初始化 const b = new Set([1,2,3,3,4])  //[...b] 值 [1,2,3,4]
+						成员匹配机制按 === 运算，但NaN等于自身，空对象{}不等于{}
+					<span class="mark">//实例属性、方法</span>
+						const a = new Set([1,2,3,4,5])
+						a.constructor //返回构造函数Set()
+						a.size  //返回实例成员总数 5
+						--方法--
+						a.add('xx') // 将'xx'添加到a中,返回Set结构本身
+						a.delete('xx') //删除值'xx'，返回布尔值，表示删除与否
+						a.has('xx') //返回布尔值，表示是否为a成员 
+						a.clear() //清除所有成员，无返回值
+					<span class="mark">//相关使用</span>	
+						[...new Set(array)] //数组去重
+						[...new Set('ababbc')].join('') //字符串去重	
+						Array.from方法可将Set结构转为数组
+						数组去重的一种新方法:
+						function dedupe(array) {
+							return Array.from(new Set(array))
+						}
 				</p>
 				<br>
 				<!------------->
