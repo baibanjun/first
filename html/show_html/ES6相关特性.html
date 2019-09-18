@@ -17,7 +17,7 @@
 				<b>let和const声明</b>
 				<hr/>
 				<p> <span class="mark">//有块级作用域，在for循环中，条件和内容是两个作用域</span>
-					for (let i = 0; i < 3; i++) {  //该处的i是父作用域
+					for (let i = 0; i < 3; i++) {   //该处的i是父作用域
 						let i = 'abc';  //该处的i是子作用域
 						console.log(i); //打印abc
 					}

@@ -49,6 +49,12 @@ const all_list = [
 	  url: 'html/show_html/ES6相关特性.html',
 	  type: 1,
 	  mark: true
+	},
+	{
+	  title: 'vue项目打包express运行',
+	  url: 'html/show_html/vue项目express服务运行.html',
+	  type: 1,
+	  mark: true
 	}
 	
 	
