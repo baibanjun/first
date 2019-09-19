@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../statics/plugins/layui-v2.3.0/layui/css/layui.css"/>
+	<link rel="stylesheet" type="text/css" href="../../statics/style/common.css"/>
+	<body>
+		<div class="main">
+			<p style="margin-top: 10px;"><a href="../../index.html" class="layui-btn layui-btn-primary"><<返回首页</a></p>
+			<fieldset class="layui-elem-field layui-field-title">
+				<legend>vue-cli3项目完整步骤（vue-cli3 + element ui + express模拟部署）</legend>
+			</fieldset>
+			<!--主体部分-->
+			<div class="content">
+				<b>创建项目</b>
+				<hr/>
+				<p> 
+					<span class="mark">//安装vue-cli</span>
+					npm install -g @vue/cli 
+					查看版本 vue -V
+					<span class="mark">//vue ui创建项目</span>
+						cmd执行vue ui  --> 新建一个项目 --> 手动配置 --> 选择babel，Router，vuex，css预处理器，linter，使用配置文件
+						检查是否生成vue.config.js
+					<span class="mark">//vue cli创建</span>
+						vue create my-project  (my-project是项目名称)
+				</p>
+				<br>
+				
+				<b>项目src文件夹内选择性添加整理</b>
+				<hr/>
+				<p> 
+					<span class="mark">//添加config文件夹，含index.js</span>
+						将一些全局用到的配置参数放在其中，如
+						export const baseURL = process.env.NODE_ENV === 'production'? 'http://www.生产.com': 'http://192.168.10.130:8765'  //接口域名
+					<span class="mark">//添加lib文件夹，放tools.js(自定义工具包)，util.js(业务相关的js)，bus.js(需要用到bus时)，axios.js(axios的预设与拦截)</span>
+					<span class="mark">// 复杂路由时，将</span>
+					<span class="mark">//</span>
+					<span class="mark">//</span>
+				</p>
+				<br>
+			</div>
+		</div>
+		
+	</body>
+</html>

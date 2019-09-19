@@ -14,7 +14,7 @@
 			</fieldset>
 			<!--主体部分-->
 			<div class="content">
-				<b>vue项目打包dist在express上运行</b>
+				<b>vue cli3项目打包dist在express上运行</b>
 				<hr/>
 				<p> 
 					<span class="mark">//全局安装（-g）express-generator</span>
@@ -27,10 +27,16 @@
 						npm start  //运行express服务
 					<span class="mark">//在浏览器打开 http://localhost:3000/ ，默认端口号3000</span>
 						此时出现 welcome to express
-					<span class="mark">//将vue项目打包 得到dist文件夹</span>
+					<span class="mark">//将vue项目打包(vue.config.js中publicPath生产时设置为'/'), 得到dist文件夹</span>
 						将dist文件夹下所有文件复制到express项目的public中
+						-->如果将dist文件夹扔进去，express项目app.js 中的代码修改为:'public/dist/' ,如下
+						app.use(express.static(path.join(__dirname, 'public/dist/')));
 					<span class="mark">//注释掉 express项目中app.js 内的 app.use('/', indexRouter);</span>
 					<span class="mark">//执行npm start 访问http://localhost:3000/</span>
+					<span class="mark">//vue 路由为history模式时，添加中间件connect-history-api-fallback</span>
+					1.express项目目录下安装中间件 npm i connect-history-api-fallback --save
+					2.express项目app.js 中引入 var history = require('connect-history-api-fallback');
+					3.app.js中，在调用静态资源前（即express.static）,调用 app.use(history());
 				</p>
 			</div>
 		</div>

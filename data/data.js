@@ -55,6 +55,12 @@ const all_list = [
 	  url: 'html/show_html/vue项目express服务运行.html',
 	  type: 1,
 	  mark: true
+	},
+	{
+	  title: 'vue-cli3项目完整步骤',
+	  url: 'html/show_html/vue-cli3项目完整步骤.html',
+	  type: 1,
+	  mark: true
 	}
 	
 	
