@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//打印事件用的原生window.print()方法，只能打印body的所有内容
+			//触发事件，在事件中写如下
+			
+			let wpt = document.getElementById('print_info') //获取需要打印的节点
+			let bdhtml = window.document.body.innerHTML;//获取当前页的整个html代码
+			let prnhtml = wpt.outerHTML //获取目标节点的html
+			window.document.body.innerHTML = prnhtml; //将body更换为目标html
+			window.print(); //调取打印方法
+			window.document.body.innerHTML = bdhtml //将保存的html还给body（不影响运行机制时可不刷新）
+			window.location.reload();	//刷新当前页（解决vue各项绑定机制返还时不生效的问题，可省上一步，但会刷新页面）
+		</script>
+	</body>
+</html>

@@ -63,6 +63,4 @@ const all_list = [
 	  mark: true
 	}
 	
-	
-
 ]

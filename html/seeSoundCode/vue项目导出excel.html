@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//在src中添加vendor文件夹，添加Blob.js和Export2Excel.js
+			//修改Export2Excel.js中的Blob引入:
+				require('script-loader!@/vendor/Blob')
+			//安装三个依赖
+				npm install --save xlsx
+				npm install --save file-saver
+				npm install --save script-loader
+			//在methods中定义方法，触发handleDown即可下载Excel
+				handleDown:function(){
+					require.ensure([], () => {
+						const { export_json_to_excel } = require('@/vendor/Export2Excel') 
+						const tHeader = ['编号', '名称'] // 对应表格输出的title
+						const filterVal = ["no","name"] // 对应表格输出的数据
+						var arr = [] //
+						arr.push({no:123,name:'张飞'})
+						const data = this.formatJson(filterVal, arr) //利用格式化方法生成需要的格式
+						export_json_to_excel(tHeader, data, 'excel名字') // 对应下载文件的名字
+					})
+				},
+				formatJson:function(filterVal, jsonData) {
+					return jsonData.map(v => filterVal.map(j => v[j]))
+				}
+		</script>
+	</body>
+</html>
