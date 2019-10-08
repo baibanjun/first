@@ -5,5 +5,27 @@
 		<title></title>
 	</head>
 	<body>
+		<script type="text/javascript">
+			//安装依赖包qrcodejs2
+			//在页面上引入import QRCode from 'qrcodejs2'
+			//事件触发
+			see_code:function(_id,_name){
+			  var _self = this
+			  setTimeout(function(){ //弹出窗中显示时目标id可能还未渲染			    
+			    document.getElementById("qrcode").innerHTML = "" //解决多次生成二维码
+			    let qrcode = new QRCode('qrcode',{ //'qrcode'是目标框id
+			      width:150,
+			      height:150,
+			      text:'www.xxx.com/records?id='+_id, //二维码内容
+			      colorDark:'#000',
+			      colorLight:'#fff'
+			    })
+			    _self.code_url = document.getElementById('qrcode').firstChild.toDataURL() //获取二维码的base64,导入下载地址中
+			    _self.code_name = _name + '.jpg' //下载时的名字
+			  },200)			
+			}
+			//下载 ,a标签中的href替换,以element 标签为例
+			<el-link :href="code_url" target="_blank" :download="code_name">下载二维码</el-link>
+		</script>
 	</body>
 </html>
