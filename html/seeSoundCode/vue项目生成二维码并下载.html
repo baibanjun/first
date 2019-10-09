@@ -11,7 +11,7 @@
 			//事件触发
 			see_code:function(_id,_name){
 			  var _self = this
-			  setTimeout(function(){ //弹出窗中显示时目标id可能还未渲染			    
+			  setTimeout(function(){ //弹出窗中显示前,目标id可能还未渲染			    
 			    document.getElementById("qrcode").innerHTML = "" //解决多次生成二维码
 			    let qrcode = new QRCode('qrcode',{ //'qrcode'是目标框id
 			      width:150,
