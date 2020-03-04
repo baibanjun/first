@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		//第三方代理配置小程序json,通过ext.json修改。会在前端根目录下生成该文件。
+		{
+			"extEnable": true, //必须
+	    	"extAppid": "wxf14630f261f1f07b",//必须，小程序appid
+		    "ext": { //前端可抓取的数据。通过方法 const txt = wx.getExtConfigSync()获取
+		        "shopId": 20,
+		        "wh":333
+		    },
+		    "window": { //会直接覆盖app.json的window。同理pages，tabbar等配置均可覆盖
+		        "backgroundTextStyle": "light",
+		        "navigationBarBackgroundColor": "#2b7ac4",
+		        "navigationBarTitleText": "abc",
+		        "navigationBarTextStyle": "white"
+		    }
+		}
+
+		//二维码生成工具weapp-qrcode.js， import QRCode from '../../../utils/weapp-qrcode.js'; 解决屏幕自适应问题
+		//前端html页 <canvas canvas-id="myQrcode" ></canvas>
+		let res = wx.getSystemInfoSync();
+        let scale = res.windowWidth / 750; 
+        let px = 460 * scale; //将460rpx转化为QRCode能够识别的px尺寸;（宽高只支持px格式，不带属性，如width:100）
+        
+        new QRCode('myQrcode', {
+            text: _self.data.url,
+            width: px,
+            height: px,
+            padding: 12, // 生成二维码四周自动留边宽度，不传入默认为0
+            correctLevel: QRCode.CorrectLevel.L, // 二维码可辨识度
+            callback: (res) => {
+            	_self.setData({
+            		codeImg:res.path  //二维码地址
+            	})
+            }
+        })
+
+        //下载上方二维码
+        //检查用户
+        //判断用户是否授权"保存到相册"
+	    checkSetting:function(){
+	        let _self = this       
+	        wx.getSetting({
+	            success(res) {
+	                //没有权限，发起授权
+	                if (!res.authSetting['scope.writePhotosAlbum']) {
+	                    wx.authorize({
+	                        scope: 'scope.writePhotosAlbum',
+	                        success() {//用户允许授权，保存图片到相册
+	                            _self.downloadUrl();
+	                        },
+	                        fail() {
+	                        	//用户点击拒绝授权，跳转到设置页，引导用户授权
+	                        	// 只能使用按钮打开设置页 <button open-type="openSetting">打开设置页</button>
+	                            wx.navigateTo({
+	                                url: '../status/status?type=setting&status=2'
+	                            })
+	                        }
+	                    })
+	                } else {//用户已授权，保存到相册
+	                    _self.downloadUrl();
+	                }
+	            }
+	        })
+	    }
+
+	    //下载图片
+	    downloadUrl: function () {
+	        let _self = this  
+	        wx.saveImageToPhotosAlbum({　　　　　　　　　 //保存到本地
+	            filePath: _self.data.codeImg,  //直接使用二维码生成的res.path
+	            success(res) {
+	                wx.showToast({
+	                    title: '保存成功',
+	                    icon: 'success',
+	                    duration: 2000
+	                })
+	            },
+	            fail: function (err) {
+	                wx.showToast({
+	                    title: '保存失败',
+	                    icon: 'none'
+	                })
+	            }
+	        })
+	    }
+
+	</script>
+</body>
+</html>
