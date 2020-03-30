@@ -6,21 +6,6 @@
 </head>
 <body>
 	<script type="text/javascript">
-		//第三方代理配置小程序json,通过ext.json修改。会在前端根目录下生成该文件(前端模拟时可先创建,内容优先于app.json)。
-		{
-			"extEnable": true, //必须
-	    	"extAppid": "wxf14630f261f1f07b",//必须，小程序appid
-		    "ext": { //前端可抓取的数据。通过方法 const txt = wx.getExtConfigSync()获取
-		        "shopId": 20,
-		        "wh":333
-		    },
-		    "window": { //会直接覆盖app.json的window。同理pages，tabbar等配置均可覆盖
-		        "backgroundTextStyle": "light",
-		        "navigationBarBackgroundColor": "#2b7ac4",
-		        "navigationBarTitleText": "abc",
-		        "navigationBarTextStyle": "white"
-		    }
-		}
 
 		//二维码生成工具weapp-qrcode.js， import QRCode from '../../../utils/weapp-qrcode.js'; 解决屏幕自适应问题
 		//前端html页 <canvas canvas-id="myQrcode" ></canvas>
@@ -70,7 +55,7 @@
 	        })
 	    }
 
-	    //下载图片
+	    //canvas方式下载图片
 	    downloadUrl: function () {
 	        let _self = this  
 	        wx.saveImageToPhotosAlbum({　　　　　　　　　 //保存到本地
@@ -85,6 +70,43 @@
 	            fail: function (err) {
 	                wx.showToast({
 	                    title: '保存失败',
+	                    icon: 'none'
+	                })
+	            }
+	        })
+	    }
+
+	    //base64下载图片
+	    // data:{
+	    // 	codeImg:'base64 ...'
+	    // }
+	    //<image src="{{codeImg}}"></image>
+	    downloadUrl: function () {
+	        let _self = this
+	        var codeDown = wx.getFileSystemManager(); //微信自带文件管理器，详见文档 API - 文件
+	        codeDown.writeFile({ //文件管理器方法
+	            filePath: wx.env.USER_DATA_PATH + '/分享码.png',  //wx.env.USER_DATA_PATH 临时存储路径
+	            data: _self.data.codeImg.slice(22), //将base64前面的data:image/png;base64去掉
+	            encoding: 'base64',
+	            success: res => {
+	                wx.saveImageToPhotosAlbum({  //保存本地方法
+	                    filePath: wx.env.USER_DATA_PATH + '/分享码.png',
+	                    success: function (res) {
+	                        wx.showToast({
+	                            title: '保存成功',
+	                            duration: 2000
+	                        })
+	                    },
+	                    fail: function (err) {
+	                        wx.showToast({
+	                            title: '保存成功',
+	                            icon:'none'
+	                        })
+	                    }
+	                })
+	            }, fail: err => {
+	                wx.showToast({
+	                    title: '保存成功',
 	                    icon: 'none'
 	                })
 	            }

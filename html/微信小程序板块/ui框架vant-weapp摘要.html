@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div>
+		<!--json文件组件模块引入-->
+
+		<!--
+		"van-cell": "/@vant/weapp/cell/index",
+        "van-cell-group": "/@vant/weapp/cell-group/index",
+        "van-icon": "/@vant/weapp/icon/index",
+        "van-tabbar": "/@vant/weapp/tabbar/index",
+        "van-tabbar-item": "/@vant/weapp/tabbar-item/index",
+        "van-panel": "/@vant/weapp/panel/index",
+        "van-search": "/@vant/weapp/search/index",
+        "van-sticky": "/@vant/weapp/sticky/index", 
+        "van-dropdown-menu": "/@vant/weapp/dropdown-menu/index",
+  		"van-dropdown-item": "/@vant/weapp/dropdown-item/index",
+  		"van-switch": "/@vant/weapp/switch/index",
+  		"van-button": "/@vant/weapp/button/index",
+  		"van-field": "/@vant/weapp/field/index",
+  		"van-picker": "/@vant/weapp/picker/index",
+  		"van-checkbox": "/@vant/weapp/checkbox/index",
+  		"van-checkbox-group": "/@vant/weapp/checkbox-group/index"
+  		"van-notice-bar": "/@vant/weapp/notice-bar/index"
+  		"van-popup": "/@vant/weapp/popup/index",
+  		"van-row": "/@vant/weapp/row/index",
+        "van-col": "/@vant/weapp/col/index",
+  		-->
+
+	==>	订单列表类  van-cell van-panel van-button  需要标号时van-tag
+
+		<van-panel use-footer-slot  wx:for="{{list}}" wx:key="id" custom-class="mgt-20 pd-10">
+	        <view slot="header">
+	            <van-cell 
+	                value="{{右边状态灰色字}}" use-label-slot title-width="450rpx">
+	                <view slot="title">
+	                    <view class="fw-b">
+	                    	<van-tag type="success">{{index+1}}</van-tag>
+	                    	<text>{{左边标题，title-width可以设置显示宽度}}</text>
+	                	</view>
+	                </view>
+	                <view slot="label">
+	                    <view>{{标题下小字}}</view>
+	                </view>
+	            </van-cell>
+	        </view>
+	        <view class="pd-20">
+	            <text>内容板块,可用view显示各种东西</text>
+	        </view>
+	        <view slot="footer">
+	            <van-button type="primary" block size="small" 
+	                data-id="{{item.id}}" 
+	                bind:click="toDetail">
+	                查看详情，用block占用全行
+	            </van-button>
+	        </view>
+	    </van-panel>
+
+	==>	各类输入框 van-field van-icon van-popup van-picker
+
+	    #普通， border下边框  required显示红色星号 
+	    <van-field label="姓名" border placeholder="请输入姓名" required bind:change="setName"/>
+	    setName: function(e) {
+	        this.setData({
+	            'info.name': e.detail
+	        })
+	    }
+
+	    #只显示静态内容
+	    <van-field value="{{name}}" label="姓名" border readonly />
+	    #静态标题右对齐,右边复制图标
+	    <van-field value="{{info.name}}" border readonly right-icon="description" bind:click-icon="pickerShow">
+	        <view slot="label" class="tar mgr-30">学生姓名:</view>
+	    </van-field>
+
+	    #可唤起选择器， right-icon右边图标  bind:click-icon点击图标事件，可套用弹出层+选择器实现选择
+	    <van-field value="{{type}}" label="选择类型" border required readonly right-icon="exchange" bind:click-icon="pickerShow"/>
+
+	    #套用微信自带的区域选择器,picker为微信原生
+	    <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+	        <van-field label="院校区域" border readonly value="{{region[0]+' '+ region[1] + ' ' + region[2]}}"></van-field>
+	    </picker>
+
+	    data:{
+	    	region:['四川省','成都市','锦江区']
+		}
+		bindRegionChange(e){
+	        let _self = this
+	        _self.setData({
+	            region:e.detail.value,
+	            areaCode: e.detail.postcode
+	        })
+	    }
+
+	==> 弹出层 + 选择器  van-popup van-picker
+
+		#value-key 设置显示在选择器中的字段名(默认text),页面有多个弹出选择时可统一唤起方法pickerShow,绑一个data-type值,统一在onConfirm中处理，建议switch-case
+		<van-popup show="{{ show }}" position="bottom">
+		    <van-picker 
+		        show-toolbar title="选择类型" columns="{{ typeList }}" value-key="name"
+		        bind:cancel="onCancel" bind:confirm="onConfirm"
+		    />
+		</van-popup>
+
+		data:{
+			show:false
+		}
+		onConfirm:function(e){
+			e.detail包含选中的整个对象，有index
+			控制show为false关闭弹出层
+		}
+
+	==> 粘性布局 + 搜索 + 下拉菜单（筛选） van-sticky van-search van-dropdown-menu van-dropdown-item van-cell van-button
+
+		# 弹出层和选择器参考上方
+		<van-sticky offset-top="{{ 0 }}">
+		    <van-search value="{{ keyWord }}" placeholder="姓名/身份证" use-action-slot bind:change="setKeyWord" bind:search="search">
+		        <view slot="action">
+		            <van-dropdown-menu>
+		                <van-dropdown-item title="筛选" id="item">
+		                    <van-field
+		                        label="中学名称"
+		                        placeholder="请输入中学名称"
+		                        border="{{ true }}"
+		                        bind:change="setSchool"
+		                    />
+		                   <van-field value="{{school}}" label="院校名称" border readonly
+                        	right-icon="exchange" bind:click-icon="pickerShow" data-type="1"/>
+
+		                    <van-button type="info" block bind:click="confirmChoose">
+		                        确定
+		                    </van-button>
+		                </van-dropdown-item>
+		            </van-dropdown-menu>
+		        </view>
+		    </van-search>
+		</van-sticky>
+
+	==> 个人中心导航条cell  van-cell  van-cell-group
+
+		# 带图标， size="large"大号cell, is-link右边箭头   图标上的 custom-style控制图标与文字距离，size 图标大小 color图标颜色
+		<van-cell title="注销账号" is-link size="large" bind:click="unBind">
+            <van-icon slot="icon" name="delete" size="24px" color="#5cadff" custom-style="margin-right:30rpx"/>
+        </van-cell>
+
+    ==> tabbar 
+
+    	# active 当前显示索引 0开始
+		<van-tabbar active="{{ active }}" bind:change="tabChange">
+		    <van-tabbar-item icon="coupon-o">列表</van-tabbar-item>
+		    <van-tabbar-item icon="user-circle-o">个人中心</van-tabbar-item>
+		</van-tabbar>
+
+		data:{
+			active: 1
+		}
+		tabChange:function(){
+	        wx.reLaunch({
+	            url: ''
+	        })
+	    }
+
+	==> 弹出层 + 复选框 van-popup van-row van-col van-checkbox van-checkbox-group van-cell van-button
+		#
+		<van-popup show="{{ show }}" position="bottom">
+		    <view>
+		        <view class="pd-10">
+		            <van-row>
+		                <van-col span="6" class="tac">
+		                    <van-button type="default" plain size="small" bind:click="checkboxCancel">取消</van-button>
+		                </van-col>
+		                <van-col span="6" offset="12" class="tac">
+		                    <van-button type="primary" size="small"  bind:click="checkboxConfirm">确认</van-button>
+		                </van-col>
+		            </van-row>
+		            <scroll-view scroll-y="true" style="height: 800rpx;">
+		                <van-checkbox-group value="{{ ids }}" bind:change="checkboxChange">
+		                    <van-cell-group>
+		                        <van-cell
+		                        wx:key="id"
+		                        wx:for="{{list}}"
+		                        title="{{item.name}}"
+		                        clickable
+		                        data-index="{{ index }}"
+		                        bind:click="toggle"
+		                        >
+		                        <van-checkbox name="{{item.id}}" catch:tap="noop" slot="right-icon" class="checkboxes-{{ index }}"></van-checkbox>
+		                        </van-cell>
+		                    </van-cell-group>
+		                </van-checkbox-group>
+		            </scroll-view>        
+		        </view>
+		    </view>
+		</van-popup>
+
+		//点击意向列表复选框的cell
+	    toggle(event) {
+	        const { index } = event.currentTarget.dataset;
+	        const checkbox = this.selectComponent(`.checkboxes-${index}`);
+	        checkbox.toggle();
+	    },
+	    //阻止点击选择框的冒泡
+	    noop: function () { },
+	    //
+	    checkboxChange: function (e) {
+	        let _self = this;
+	        _self.setData({
+	            ids: e.detail
+	        });
+	    }
+	</div>
+</body>
+</html>

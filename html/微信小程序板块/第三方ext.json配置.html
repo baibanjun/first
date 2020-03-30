@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		//第三方代理配置小程序json,通过ext.json修改。会在前端根目录下生成该文件(前端模拟时可先创建,内容优先于app.json)。
+		{
+			"extEnable": true, //必须
+	    	"extAppid": "wxf14630f261f1f07b",//必须，小程序appid
+		    "ext": { //前端可抓取的数据。通过方法 const txt = wx.getExtConfigSync()获取
+		        "shopId": 20,
+		        "wh":333
+		    },
+		    "window": { //会直接覆盖app.json的window。同理pages，tabbar等配置均可覆盖
+		        "backgroundTextStyle": "light",
+		        "navigationBarBackgroundColor": "#2b7ac4",
+		        "navigationBarTitleText": "abc",
+		        "navigationBarTextStyle": "white"
+		    }
+		}
+	</script>
+</body>
+</html>
