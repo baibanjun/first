@@ -29,6 +29,12 @@
   		"van-popup": "/@vant/weapp/popup/index",
   		"van-row": "/@vant/weapp/row/index",
         "van-col": "/@vant/weapp/col/index",
+        "van-uploader": "/@vant/weapp/uploader/index",
+        "van-collapse": "/@vant/weapp/collapse/index",
+  		"van-collapse-item": "/@vant/weapp/collapse-item/index",
+  		"van-divider": "/@vant/weapp/divider/index",
+  		"van-radio": "@vant/weapp/radio/index",
+  		"van-radio-group": "@vant/weapp/radio-group/index"
   		-->
 
 	==>	订单列表类  van-cell van-panel van-button  需要标号时van-tag
@@ -39,7 +45,7 @@
 	                value="{{右边状态灰色字}}" use-label-slot title-width="450rpx">
 	                <view slot="title">
 	                    <view class="fw-b">
-	                    	<van-tag type="success">{{index+1}}</van-tag>
+	                    	<van-tag type="success" plain>{{index+1}}</van-tag>
 	                    	<text>{{左边标题，title-width可以设置显示宽度}}</text>
 	                	</view>
 	                </view>
@@ -114,7 +120,7 @@
 			控制show为false关闭弹出层
 		}
 
-	==> 粘性布局 + 搜索 + 下拉菜单（筛选） van-sticky van-search van-dropdown-menu van-dropdown-item van-cell van-button
+	==> 粘性布局 + 搜索 + 下拉菜单（筛选）+ 更多(筛选并排) van-sticky van-search van-dropdown-menu van-dropdown-item van-cell van-button
 
 		# 弹出层和选择器参考上方
 		<van-sticky offset-top="{{ 0 }}">
@@ -135,6 +141,7 @@
 		                        确定
 		                    </van-button>
 		                </van-dropdown-item>
+		                <!-- <van-icon name="bars" class="mgl-30" size="60rpx" bind:click="openSheet"/> -->
 		            </van-dropdown-menu>
 		        </view>
 		    </van-search>
