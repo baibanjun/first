@@ -10,13 +10,16 @@
 		<div class="main">
 			<p style="margin-top: 10px;"><a href="../../index.html" class="layui-btn layui-btn-primary"><<返回首页</a></p>
 			<fieldset class="layui-elem-field layui-field-title">
-				<legend>cookie及localStorage使用</legend>
+				<legend>cookie及localStorage/sessionStorage使用</legend>
 			</fieldset>
 			<!--主体部分-->
 			<div class="content" >
 				<b>cookie</b>
 				<hr />
-				<p> <span class="mark">//没有设置有效期，则为会话cookie。</span>
+				<p> 
+					<span class="mark">//特点</span>
+					存储大小约为4Kb,有个数限制通常浏览器为20个以内，在设置的过期时间前有效。
+					<span class="mark">//没有设置有效期，则为会话cookie。</span>
 					$.cookie('cookieName','value',{expires:7,path:'/'}) 
 					<span class="mark">//读取cookie，存在则返回值，不存在返回null</span>
 					$.cookie('cookieName')
@@ -24,23 +27,30 @@
 					$.cookie('cookieName',null,{expires:-1,path:'/'})   
 				</p>
 				
-				<b>localStorage</b>
+				<b>localStorage/sessionStorage</b>
 				<hr />
-				<p><span class="mark">//判断是否支持</span>
+				<p>
+				<span class="mark">//特点及区别</span>
+				二者皆有5m左右的存储空间,使用方法相同
+				session是会话级的,仅仅存储在当前页面的内存中，同浏览器的不同窗口 -- 不共享！生命周期为关闭当前页面
+				<span class="mark">//判断是否支持</span>
 				if(window.localStorage)
-				<span class="mark">//写入、读取、移除、清空</span>
-				localStorage.setItem(key, value); 
-				var xx = localStorage.getItem(key);
-				localStorage.removeItem(key);
-				localStorage.clear();
-				<span class="mark">//获取整个localStorage并可按对象处理</span>
-				var storage = window.localStorage; 
+				<span class="mark">//写入、读取、移除、清空、整个storage处理</span>
+				let storage = window.localStorage
+				storage是一个对象，包含已存储的键值对，以及相关的原型方法(setItem、getItem、removeItem、clear)
+				storage.setItem(key, value); 
+				let xx = storage.getItem(key);
+				storage.removeItem(key);
+				storage.clear();
+				修改值可以直接给key赋值
 				storage.key1 = "hello";
 				storage["key2"] = "world";
-				console.log(storage.key1);
-				console.log(storage["key2"]);
-				<span class="mark">//改值或清空会触发storage事件</span>
-				window.addEventListener("storage",function(){},false); 
+				<span class="mark">//非当前页面对localStorage进行修改时才会触发storage事件。(localStorage可实现两个浏览器窗口之间的通信)</span>
+				window.addEventListener("storage",function(e){
+					e.oldValue //修改之前的数据
+					e.newValue //修改后的数据，为null表示删除
+					e.storageArea //修改后的现有存储
+				},false);   //默认false 冒泡传递， true 捕获传递 
 				</p>
 			</div>
 		</div>

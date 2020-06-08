@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		# 原理 ： 利用 bindtouchstart(catchtouchstart) 和 bindtouchend(catchtouchend) 捕捉屏幕上的点，判断两点之间的位置
+		# bindtouchstart方法会有冒泡，用catchtouchstart方法可以解决
+		start和end绑定的方法中 event对象有 event.changedTouches[0].clientX 获取当前X坐标点
+		touchStart(e){
+		    this.setData({
+		        start: e.changedTouches[0].clientX
+		    })
+		},
+		touchEnd(e){
+		    let _self = this
+		    if (_self.data.start - e.changedTouches[0].clientX > 120){
+		    	//左滑
+		    }
+		    else if (_self.data.start - e.changedTouches[0].clientX < -120){
+		    	//右划
+		    }
+		}
+	</script>
+</body>
+</html>

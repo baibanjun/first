@@ -14,17 +14,11 @@ const all_list = [
 	  type: 1,
 	  mark: true
 	},
-  {
-    title: 'layui常用知识点',
-    url: 'html/showHtml/layui常用知识点.html',
-    type: 1,
-    mark: true
-  },
 	{
-	  title: 'bootstrap库样式部分',
-	  url: 'html/showHtml/bootstrap库样式部分.html',
-	  type: 1,
-	  mark: true
+		title: 'layui常用知识点',
+		url: 'html/showHtml/layui常用知识点.html',
+		type: 1,
+		mark: true
 	},
 	{
 	  title: 'cookie及localStorage使用',
@@ -61,6 +55,12 @@ const all_list = [
 	  url: 'html/showHtml/vue-cli3项目完整步骤.html',
 	  type: 1,
 	  mark: true
-	}
+	},
+	{
+	  title: 'typescript摘要',
+	  url: 'html/showHtml/typescript摘要.html',
+	  type: 1,
+	  mark: true
+	},
 	
 ]
