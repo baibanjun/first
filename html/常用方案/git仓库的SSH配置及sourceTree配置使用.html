@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body></body>
+	<script type="text/javascript">
+		// 打开git命令行工具，执行以下两种命令
+		//用于查看本地是否有ssh key文件
+		 `    ls -al ~/.ssh     `  
+		//生成ssh key文件
+		`   ssh-keygen -t rsa -C "自己的邮箱地址@qq.com"     `
+
+		//进入git仓库，设置内找到ssh配置，新增ssh key，将生成的ssh文件id_rsa.pub文件全部内容拷贝入配置内
+
+		//sourceTree的配置使用
+		ssh添加之后，打开sourceTree完成注册，点击工具 - 创建ssh密钥，点击load按钮，找到生成的id_rsa文件（注意不是pub），然后点击save private key，生成一个自命名ppk文件
+		点击工具 - 启动ssh助手，任务栏找到助手，点击add key ，选取生成的ppk文件，即可使用。
+
+		sourceTree点击clone，使用ssh 的git仓库地址，会识别为仓库，未成功可先使用http链接识别一下再更换ssh识别
+	</script>
+</html>
